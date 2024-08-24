@@ -1,0 +1,18 @@
+// declaration of puts
+extern int puts (&char)
+
+// data segment
+@data
+string str = "hello world" "\0"
+
+// main segment
+@main
+int main (void) {
+    // register allocation occurs later
+    // %0 and %1 refer to undetermined registers
+
+    %0 = call puts(&str)
+    %1 = %0 > 0
+
+    ret %1
+}
