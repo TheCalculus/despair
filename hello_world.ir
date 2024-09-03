@@ -1,12 +1,10 @@
-extern int puts (&char)
+@puts = extern i32 (ptr)
 
-@data
-string str = "hello world" "\0"
+@str = i8 "hello world" 0
 
-@main
-int main (void) {
-    int ret = call puts(&str)
-    %1 = %0 > 0
+@main = i32 () {
+    %0 = i32 @puts(ptr @str)
+    %1 = icmp sgt i32 %0, 0
 
     ret %1
 }
