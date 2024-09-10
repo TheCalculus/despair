@@ -1,16 +1,16 @@
 # external definition of puts
-extern i32 @puts(ptr u8)
+@puts = extern i32 (ptr)
 
 # define u8 pointer
-ptr u8 @str = "hello world" 0
+@str = i8 "hello world" 0
 
 # main function
 # void -> i32
-i32 @main() {
+@main() = i32() {
 # set vr0 to retval of puts
     %0 = i32 @puts(ptr @str)
 # set vr1 to bool %0 > 0
-    %1 = i32 eq %0, 0
+    %1 = i32 cmp.sgt %0, 0
 # return vr1
     ret %1
 }
